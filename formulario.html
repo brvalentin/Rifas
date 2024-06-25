@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Rifa</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function validarFormulario() {
+            const numeroRifa = document.getElementById('numero_rifa').value;
+            const telefone = document.getElementById('telefone').value;
+            const regexNumero = /^[0-9]+$/;
+            const regexTelefone = /^[0-9]{10,11}$/;
+
+            if (!regexNumero.test(numeroRifa)) {
+                alert("Por favor, insira um número de rifa válido (apenas números).");
+                return false;
+            }
+            if (!regexTelefone.test(telefone)) {
+                alert("Por favor, insira um número de telefone válido (apenas números, com 10 ou 11 dígitos).");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>Cadastro de Rifa</h1>
+        <form action="cadastra_rifa.php" method="post" onsubmit="return validarFormulario()">
+            <label for="numero_rifa">Número da Rifa:</label><br>
+            <input type="text" id="numero_rifa" name="numero_rifa" required><br><br>
+            <label for="nome_comprador">Nome do Comprador:</label><br>
+            <input type="text" id="nome_comprador" name="nome_comprador" required><br><br>
+            <label for="telefone">Telefone:</label><br>
+            <input type="text" id="telefone" name="telefone" required><br><br>
+            <label for="endereco">Endereço:</label><br>
+            <input type="text" id="endereco" name="endereco" required><br><br>
+            <input type="submit" value="Cadastrar Rifa">
+        </form>
+    </center>
+</body>
+</html>
